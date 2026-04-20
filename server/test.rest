@@ -9,3 +9,13 @@ Content-Type: application/json
     "username" : "will@gmail.com",
     "password" : "password123"
 }
+
+### ADD MESSAGE 
+POST http://localhost:3000/api/posts
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc3NjcxNDQyMSwiZXhwIjoxNzc2ODAwODIxfQ.dddu_jVJIyXGRgz181hBYHZ6h0ICB1s6ReSgw0NE65c
+
+{
+    "post_title": "Testing",
+    "post": "Test post to make sure routing and display works"
+}
