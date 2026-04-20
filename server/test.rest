@@ -1,0 +1,11 @@
+### GET
+GET http://localhost:3000/api/health
+
+### Login 
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+    "username" : "will@gmail.com",
+    "password" : "password123"
+}
