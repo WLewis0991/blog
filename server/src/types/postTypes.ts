@@ -8,3 +8,4 @@ interface NewPost{
 }
 
 export type { NewPost }
+export type Post = NewPost

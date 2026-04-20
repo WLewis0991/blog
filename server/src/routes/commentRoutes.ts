@@ -1,6 +1,6 @@
 import express from "express";
 import db from "../config/db";
-import type { NewComment } from "../types/commentTypes";
+import type { NewComment, Comment } from "../types/commentTypes";
 import { authMiddleware } from "../middleware/middleware";
 import { Request, Response } from "express";
 
@@ -33,5 +33,17 @@ router.post("/:postId/comments", authMiddleware, async (req:Request, res:Respons
     res.status(500).json({ error: "Failed to create comment" });
   }
 });
+
+router.get("/:postId/comments", async (req: Request, res: Response) => {
+    try {
+        const result = await db.query<Comment>(
+        "SELECT comments.*, users.username FROM comments INNER JOIN users ON users.id = comments.user_id ORDER BY created_at DESC"
+        );
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to fetch posts" });
+  }
+})
 
 export default router;

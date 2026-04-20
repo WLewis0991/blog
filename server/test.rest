@@ -23,10 +23,13 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhd
 ###ADD COMMENT TO POST
 POST http://localhost:3000/api/posts/1/comments
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc3NjcxNDQyMSwiZXhwIjoxNzc2ODAwODIxfQ.dddu_jVJIyXGRgz181hBYHZ6h0ICB1s6ReSgw0NE65c
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc3NjcxNjUzMCwiZXhwIjoxNzc2ODAyOTMwfQ.WUDjWnNnm9ZmI9wXdyhYK_Y4E9jq-2yon1-6onj-6Bw
 
 
 {
   "user_id": 1,
   "comment": "Testing comment from REST client"
 }
+
+###GET COMMENTS ON A POST
+GET http://localhost:3000/api/posts/1/comments

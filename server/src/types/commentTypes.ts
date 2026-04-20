@@ -7,3 +7,4 @@ interface NewComment {
 }
 
 export type {NewComment}
+export type Comment = NewComment

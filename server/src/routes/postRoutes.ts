@@ -1,6 +1,6 @@
-import express from "express";
+import express, { response } from "express";
 import db from "../config/db"
-import type { NewPost } from "../types/postTypes";
+import type { NewPost, Post } from "../types/postTypes";
 import { authMiddleware } from "../middleware/middleware";
 import { Request, Response } from "express";
 
@@ -30,5 +30,21 @@ router.post("/", authMiddleware, async (req: Request, res: Response ) => {
         post,
     });
 })
+
+router.get("/", async (req: Request, res: Response) => {
+  try {
+    const result = await db.query(
+      `SELECT posts.*, users.username
+       FROM posts
+       INNER JOIN users ON users.id = posts.user_id
+       ORDER BY posts.created_at DESC`
+    );
+
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to fetch posts" });
+  }
+});
 
 export default router;
