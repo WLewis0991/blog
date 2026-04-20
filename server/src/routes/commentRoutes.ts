@@ -35,15 +35,25 @@ router.post("/:postId/comments", authMiddleware, async (req:Request, res:Respons
 });
 
 router.get("/:postId/comments", async (req: Request, res: Response) => {
-    try {
-        const result = await db.query<Comment>(
-        "SELECT comments.*, users.username FROM comments INNER JOIN users ON users.id = comments.user_id ORDER BY created_at DESC"
-        );
+  const postId = parseInt(req.params.postId as string);
+  if (!postId) {
+    return res.status(400).json({ error: "Invalid post ID" });
+  }
+
+  try {
+    const result = await db.query<Comment>(
+      `SELECT comments.*, users.username 
+       FROM comments 
+       INNER JOIN users ON users.id = comments.user_id 
+       WHERE comments.post_id = $1
+       ORDER BY comments.created_at DESC`,
+      [postId]
+    );
     res.json(result.rows);
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: "Failed to fetch posts" });
+    res.status(500).json({ error: "Failed to fetch comments" });
   }
-})
+});
 
 export default router;

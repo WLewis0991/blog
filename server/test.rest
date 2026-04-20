@@ -31,5 +31,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhd
   "comment": "Testing comment from REST client"
 }
 
-###GET COMMENTS ON A POST
+###GET ALL POSTS
+GET http://localhost:3000/api/posts
+
+### GET COMMENTS ON A POST
 GET http://localhost:3000/api/posts/1/comments

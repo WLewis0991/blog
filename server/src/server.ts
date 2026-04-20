@@ -21,7 +21,7 @@ app.get("/api/health", (_req: Request, res: Response) => {
 
 pool.query("SELECT 1")
 
-app.use("/auth", authRoutes)
+app.use("/auth", authRoutes);
 app.use("/api/posts", postRoutes);
 app.use("/api/posts", commentRoutes);
 
