@@ -92,7 +92,7 @@ export default function SplashPage() {
             transition: "opacity 1.4s ease 0.2s",
           }}
         >
-          est. 2025
+          est. 2026
         </p>
 
         {/* Blog name */}
