@@ -10,7 +10,7 @@ function App() {
 
 
   return (
-    <><div className="bg-bg-void h-dvh w-full">
+    <><div className="bg-bg-void min-h-screen w-full">
       <BrowserRouter>
         <Navbar />
           <Routes>

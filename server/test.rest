@@ -13,11 +13,45 @@ Content-Type: application/json
 ### ADD MESSAGE 
 POST http://localhost:3000/api/posts
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc3NjcxNDQyMSwiZXhwIjoxNzc2ODAwODIxfQ.dddu_jVJIyXGRgz181hBYHZ6h0ICB1s6ReSgw0NE65c
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc3NjgwNzYyOSwiZXhwIjoxNzc2ODk0MDI5fQ.qtRGkBmJMHgzNRXQWV2HPuTSlIWEMEtgoQXTv89KC7Q
 
 {
-    "post_title": "Testing",
-    "post": "Test post to make sure routing and display works"
+    "post_title": "Should you be using Tailwind CSS?",
+    "post": "Tailwind CSS is one of the most popular tools in modern frontend development. It takes a different approach from traditional CSS by letting you style elements directly in your markup using utility classes instead of writing separate CSS files.
+
+At first, this approach can feel strange. Instead of defining reusable class names like “button” or “card,” you apply small utility classes such as padding, colors, spacing, and typography directly inside your HTML or JSX.
+
+For example, instead of writing custom CSS for a button, you might write something like this: a blue background, padding, rounded corners, and text styling all inside a single class attribute.
+
+This shift in thinking is what makes Tailwind both powerful and controversial.
+
+One of the biggest advantages of Tailwind is speed. Once you become familiar with the utility classes, you can build interfaces very quickly without constantly switching between CSS files and components. Everything is visible in one place, which reduces context switching and helps you stay focused.
+
+Another advantage is consistency. Tailwind is built around a design system with predefined spacing, colors, and typography scales. This means your UI naturally stays visually consistent without needing to manually enforce design rules across multiple stylesheets.
+
+Tailwind also scales well in team environments. Instead of different developers writing different CSS patterns, everyone uses the same utility system. This reduces confusion and makes large codebases easier to maintain.
+
+However, Tailwind is not perfect for everyone.
+
+One common criticism is that HTML or JSX can become cluttered. Long strings of utility classes can make components harder to read, especially for developers who are not familiar with Tailwind. At first glance, it can feel messy compared to traditional CSS.
+
+Another downside is repetition. You often find yourself reusing the same groups of utility classes across different components. While there are solutions for this, such as extracting components or using helper functions, it still requires discipline.
+
+Some developers also prefer a clearer separation between structure and styling. With Tailwind, styling lives directly in your markup, which goes against traditional CSS architecture principles.
+
+So should you use Tailwind CSS?
+
+The answer depends on what you value.
+
+If you care about speed, consistency, and building modern web applications efficiently, Tailwind is an excellent choice. It is widely used in startups, SaaS products, and indie projects because it helps developers move fast without losing control of design.
+
+If you prefer strict separation of concerns, highly structured CSS architecture, or more traditional styling workflows, Tailwind may feel restrictive or noisy.
+
+Ultimately, Tailwind is not about being better or worse than traditional CSS. It is about choosing a workflow that matches how you like to build.
+
+If it helps you ship better products faster, it is worth using. If it slows you down or feels uncomfortable, it is not the right tool for you.
+
+The best choice is always the one that helps you build consistently and effectively."
 }
 
 ###ADD COMMENT TO POST

@@ -2,16 +2,16 @@ import { Link } from "react-router-dom"
 export default function Navbar () {
 
     return(<>
-    <div className="fixed top-0 left-0 w-full z-50 flex justify-between p-3 m-2">
+    <div className="fixed top-0 left-0 w-full z-50 flex items-center justify-between p-3 bg-bg-void/50">
         <h1
             className="text-white font-semibold leading-none select-none whitespace-nowrap"
             style={{
                 fontFamily: "'Georgia', 'Times New Roman', serif",
-                fontSize: "clamp(1rem, 2vw, 1.4rem)",
-                letterSpacing: "-0.015em",
+                fontSize: "clamp(1.5rem, 3vw, 2rem)",
+                letterSpacing: "-0.1em",
             }}
             >
-            <Link to="/home">
+            <Link to="/">
                 <span style={{ color: "#c8d8f0" }}>the</span>{" "}
                 <span style={{ fontStyle: "italic" }}>Blog</span>
             </Link>

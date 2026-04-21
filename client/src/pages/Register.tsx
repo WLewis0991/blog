@@ -12,8 +12,6 @@ export default function Register() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  // ── onChange handlers ───────────────────────────────
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
@@ -22,8 +20,6 @@ export default function Register() {
       [name]: value,
     }));
   };
-
-  // ── submit ───────────────────────────────────────────
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

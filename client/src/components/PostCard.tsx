@@ -12,7 +12,7 @@ export function PostCard({ post }: { post: Post }) {
         </h2>
 
 
-        <p className="mt-3 text-ink-subtle">
+        <p className="mt-3 text-ink-subtle line-clamp-6">
           {post.post}
         </p>
 

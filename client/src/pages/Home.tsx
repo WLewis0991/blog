@@ -24,7 +24,7 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center pt-20 w-full">
+    <div className="flex flex-col items-center pt-20 w-full gap-5">
         <h1
             className="text-white font-semibold leading-none select-none"
             style={{
