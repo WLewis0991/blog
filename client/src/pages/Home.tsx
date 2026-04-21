@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import type { Post } from "../types/postTypes";
 import { api } from "../api/auth";
 import { PostCard } from "../components/PostCard";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 export default function HomePage() {
   const [posts, setPosts] = useState<Post[]>([]);
@@ -38,7 +39,7 @@ export default function HomePage() {
             <span style={{ fontStyle: "italic" }}>posts</span>
         </h1>
         <br />
-      {loading && <p className="status">Loading posts...</p>}
+      {loading && <div className="status"><LoadingSpinner /> <p className="text-white">Loading...</p>  </div>}
 
       {error && <p className="status error">Error: {error}</p>}
 

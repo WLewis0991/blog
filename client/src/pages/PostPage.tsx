@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { api } from "../api/auth";
 import type { Post } from "../types/postTypes";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 type Comment = {
   id: number;
@@ -64,7 +65,7 @@ export default function PostPage() {
     }
   };
 
-  if (loading) return <p className="text-ink-subtle">Loading...</p>;
+  if (loading) return <div className="pt-4"> <LoadingSpinner /> <p>Loading...</p> </div>;
   if (!post) return <p className="text-red-400">Post not found</p>;
 
   return (
