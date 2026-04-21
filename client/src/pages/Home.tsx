@@ -24,7 +24,20 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center pt-20">
+    <div className="flex flex-col items-center pt-20 w-full">
+        <h1
+            className="text-white font-semibold leading-none select-none"
+            style={{
+                fontFamily: "'Georgia', 'Times New Roman', serif",
+                fontSize: "clamp(1.6rem, 3vw, 2.4rem)",
+                letterSpacing: "-0.02em",
+            }}
+            >
+            <span style={{ color: "#c8d8f0" }}>Most</span>{" "}
+            <span>recent</span>{" "}
+            <span style={{ fontStyle: "italic" }}>posts</span>
+        </h1>
+        <br />
       {loading && <p className="status">Loading posts...</p>}
 
       {error && <p className="status error">Error: {error}</p>}

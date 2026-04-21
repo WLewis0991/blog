@@ -4,6 +4,7 @@ import HomePage from "./pages/Home";
 import SignIn from "./pages/SignIn";
 import Register from "./pages/Register";
 import SplashPage from "./pages/Splash";
+import PostPage from "./pages/PostPage";
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
             <Route path="/home" element={<HomePage />} />
             <Route path="/sign-in" element={<SignIn />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/post/:id" element={<PostPage />} />
           </Routes>     
       </BrowserRouter>
       </div>
