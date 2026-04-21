@@ -11,12 +11,14 @@ export default function Navbar () {
                 letterSpacing: "-0.015em",
             }}
             >
-            <span style={{ color: "#c8d8f0" }}>the</span>{" "}
-            <span style={{ fontStyle: "italic" }}>Blog</span>
+            <Link to="/home">
+                <span style={{ color: "#c8d8f0" }}>the</span>{" "}
+                <span style={{ fontStyle: "italic" }}>Blog</span>
+            </Link>
         </h1>
         <div className="flex gap-3">
-            <Link to="/sign-in" className="text-blue-100 p-3 border border-blue-100 rounded-full hover:bg-blue-100 hover:text-black transition-all"> Log In</Link>
-            <Link to="/register" className="text-blue-100 p-3 border border-blue-100 rounded-full hover:bg-blue-100 hover:text-black transition-alll"> Sign Up</Link>
+            <Link to="/sign-in" className="text-blue-100 p-1 pl-4 pr-4 border border-blue-100 rounded-full hover:bg-blue-100 hover:text-black transition-all"> Log In</Link>
+            <Link to="/register" className="text-blue-100 p-1 pl-3 pr-3 border border-blue-100 rounded-full hover:bg-blue-100 hover:text-black transition-alll"> Sign Up</Link>
         </div>
     </div>
         </>)
