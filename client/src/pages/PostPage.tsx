@@ -8,6 +8,9 @@ export default function PostPage() {
   const [post, setPost] = useState<Post | null>(null);
   const [loading, setLoading] = useState(true);
 
+  const token = localStorage.getItem("token");
+  const isLoggedIn = !!token;
+
   useEffect(() => {
     const fetchPost = async () => {
       try {
@@ -38,10 +41,26 @@ export default function PostPage() {
 
         {/* Comments section placeholder */}
         <div className="mt-10 border-t border-edge-faint pt-6">
-          <h2 className="text-lg text-ink-secondary">Comments</h2>
-          <p className="text-ink-faint text-sm mt-2">
-            Comments coming soon...
-          </p>
+        <h2 className="text-lg text-ink-secondary">Comments</h2>
+
+        {isLoggedIn ? (
+            <div className="mt-4 flex flex-col gap-3">
+
+            <textarea
+                placeholder="Join the conversation..."
+                className="w-full rounded-md bg-bg-surface border border-edge-base px-3 py-2 text-ink-primary placeholder:text-ink-faint outline-none focus:border-accent-dusk focus:ring-1 focus:ring-accent-glow"
+            />
+
+            <button className="self-end px-4 py-2 rounded-md bg-accent-horizon text-ink-primary hover:bg-accent-dusk transition-colors">
+                Submit
+            </button>
+
+            </div>
+        ) : (
+            <p className="text-ink-faint text-sm mt-2">
+            Sign in to join the conversation.
+            </p>
+        )}
         </div>
 
       </div>

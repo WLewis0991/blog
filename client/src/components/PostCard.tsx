@@ -11,6 +11,7 @@ export function PostCard({ post }: { post: Post }) {
           {post.post_title}
         </h2>
 
+
         <p className="mt-3 text-ink-subtle">
           {post.post}
         </p>

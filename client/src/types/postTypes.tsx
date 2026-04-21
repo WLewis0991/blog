@@ -3,4 +3,5 @@ export type Post = {
   user_id: number;
   post_title: string;
   post: string;
+  created_at:string;
 };
