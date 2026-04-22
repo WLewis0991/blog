@@ -85,7 +85,7 @@ export default function Register() {
 
         </form>
 
-        <p className="mt-5 text-center text-xs text-ink-faint">
+        <p className="mt-5 text-center text-s text-ink-faint">
           Already have an account?{" "}
           <Link to="/login" className="text-ink-muted">
             Sign in

@@ -5,6 +5,8 @@ import SignIn from "./pages/SignIn";
 import Register from "./pages/Register";
 import SplashPage from "./pages/Splash";
 import PostPage from "./pages/PostPage";
+import AdminPage from "./pages/Admin";
+import Footer from "./components/Footer";
 
 function App() {
 
@@ -19,7 +21,9 @@ function App() {
             <Route path="/sign-in" element={<SignIn />} />
             <Route path="/register" element={<Register />} />
             <Route path="/post/:id" element={<PostPage />} />
-          </Routes>     
+            <Route path="/admin" element={<AdminPage />} />
+          </Routes> 
+          <Footer />    
       </BrowserRouter>
       </div>
     </>

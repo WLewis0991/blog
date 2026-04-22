@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 export default function Navbar () {
 
     return(<>
-    <div className="fixed top-0 left-0 w-full z-50 flex items-center justify-between p-3 bg-bg-void/50">
+    <div className="fixed top-0 left-0 w-full z-50 flex items-center justify-between p-3 bg-bg-void/80">
         <h1
             className="text-white font-semibold leading-none select-none whitespace-nowrap"
             style={{
@@ -17,8 +17,8 @@ export default function Navbar () {
             </Link>
         </h1>
         <div className="flex gap-3">
-            <Link to="/sign-in" className="text-blue-100 p-1 pl-4 pr-4 border border-blue-100 rounded-full hover:bg-blue-100 hover:text-black transition-all"> Log In</Link>
-            <Link to="/register" className="text-blue-100 p-1 pl-3 pr-3 border border-blue-100 rounded-full hover:bg-blue-100 hover:text-black transition-alll"> Sign Up</Link>
+            <Link to="/sign-in" className="text-blue-100 p-1 pl-4 pr-4 border-2 font-semibold border-blue-100 rounded-full hover:bg-blue-100 hover:text-black transition-all"> Log In</Link>
+            <Link to="/register" className="text-blue-100 p-1 pl-3 pr-3 border-2 font-semibold border-blue-100 rounded-full hover:bg-blue-100 hover:text-black transition-alll"> Sign Up</Link>
         </div>
     </div>
         </>)

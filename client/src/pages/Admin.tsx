@@ -28,6 +28,8 @@ export default function SignIn() {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    
+    return;
 
     const { username, password } = user;
 
@@ -47,7 +49,7 @@ export default function SignIn() {
     }
   }
 
-  return (
+    return (<>
     <div className="flex min-h-dvh items-center justify-center bg-bg-void px-4">
       <div className="w-full max-w-sm rounded-xl border border-edge-faint bg-bg-deep p-6 shadow-lg shadow-black/40">
 
@@ -58,7 +60,7 @@ export default function SignIn() {
             letterSpacing: "-0.02em",
           }}
         >
-          Log In
+          Admin Log In
         </h1>
 
         <p className="mt-2 text-ink-subtle text-sm">
@@ -91,16 +93,14 @@ export default function SignIn() {
           >
             Sign In
           </button>
-
         </form>
-
         <p className="mt-5 text-center text-s text-ink-faint">
-          No account yet?{" "}
-          <Link to="/register" className="text-ink-muted">
-            Sign up here.
+          Here on accident?{" "}
+          <Link to="/" className="text-ink-muted">
+            Let's go home.
           </Link>
         </p>
       </div>
     </div>
-  );
+    </>)
 }

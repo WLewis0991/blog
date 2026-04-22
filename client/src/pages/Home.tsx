@@ -38,6 +38,17 @@ export default function HomePage() {
             <span>recent</span>{" "}
             <span style={{ fontStyle: "italic" }}>posts</span>
         </h1>
+                <div
+          className="mt-7 mb-7 flex items-center gap-4"
+          style={{
+            opacity: 1,
+            transition: "opacity 1.2s ease 0.55s",
+          }}
+        >
+          <div className="h-px w-16 bg-gradient-to-r from-transparent to-slate-600" />
+          <div className="w-1 h-1 rounded-full bg-slate-500" />
+          <div className="h-px w-16 bg-gradient-to-l from-transparent to-slate-600" />
+        </div>
         <br />
       {loading && <div className="status"><LoadingSpinner /> <p className="text-white">Loading...</p>  </div>}
 

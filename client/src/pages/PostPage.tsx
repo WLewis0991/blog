@@ -88,7 +88,6 @@ export default function PostPage() {
             Comments
           </h2>
 
-          {/* Input */}
           {isLoggedIn ? (
             <div className="mt-4 flex flex-col gap-3">
 
