@@ -149,7 +149,7 @@ export default function SplashPage() {
         {/* Enter button */}
         <Link to="/home">
             <button
-            className="group mt-12 relative px-10 py-3.5 text-sm tracking-widest uppercase font-medium text-slate-300 border border-slate-700 rounded-full overflow-hidden transition-all duration-300 hover:text-white hover:border-slate-400"
+            className="group mt-12 relative px-10 py-3.5 text-sm tracking-widest uppercase font-medium text-slate-300 border-2 border-slate-700 rounded-full overflow-hidden transition-all duration-300 hover:text-white hover:border-slate-400"
             style={{
                 fontFamily: "'Georgia', serif",
                 letterSpacing: "0.2em",

@@ -1,46 +1,54 @@
-import express, { response } from "express";
-import db from "../config/db"
-import type { NewPost, Post } from "../types/postTypes";
+import express from "express";
+import { supabase } from "../config/supabaseClient";
+import type { NewPost } from "../types/postTypes";
 import { authMiddleware } from "../middleware/middleware";
 import { Request, Response } from "express";
 
 const router = express.Router();
 
-router.post("/", authMiddleware, async (req: Request, res: Response ) => {
-    const { post, post_title} = req.body as NewPost;
-    const userId = req.user?.userId ?? null;
+router.post("/", authMiddleware, async (req: Request, res: Response) => {
+  const { post, post_title } = req.body as NewPost;
+  const userId = req.user?.userId ?? null;
 
-    if (!post) {
-        return res.status(400).json({message: "Dont forget to post something!!"})
-    }
+  if (!post) {
+    return res.status(400).json({ message: "Dont forget to post something!!" });
+  }
 
-    if (!userId) {
-        return res.status(401).json({ error:"Missing userId from token"});
-    }
+  if (!userId) {
+    return res.status(401).json({ error: "Missing userId from token" });
+  }
 
-    const result = await db.query<{id:number}> (
-        "INSERT INTO posts (user_id, post, post_title) VALUES ($1, $2, $3) RETURNING id",
-        [userId, post, post_title]
-    );
+  const { data, error } = await supabase
+    .schema("blog")
+    .from("posts")
+    .insert({ user_id: userId, post, post_title })
+    .select("id")
+    .single();
 
-    res.json({
-        id: result.rows[0].id,
-        user_id: userId,
-        post_title,
-        post,
-    });
-})
+  if (error) return res.status(500).json({ error: error.message });
+
+  res.json({
+    id: data.id,
+    user_id: userId,
+    post_title,
+    post,
+  });
+});
 
 router.get("/", async (req: Request, res: Response) => {
   try {
-    const result = await db.query(
-      `SELECT posts.*, users.username
-       FROM posts
-       INNER JOIN users ON users.id = posts.user_id
-       ORDER BY posts.created_at DESC`
-    );
+    const { data, error } = await supabase
+      .schema("blog")
+      .from("posts")
+      .select(`*, users(username)`)
+      .order("created_at", { ascending: false });
 
-    res.json(result.rows);
+
+    if (error) {
+      console.error("Supabase error:", error) 
+      return res.status(500).json({ error: error.message });
+    }
+    res.json(data);
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Failed to fetch posts" });
@@ -51,19 +59,16 @@ router.get("/:id", async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
 
-    const result = await db.query(
-      `SELECT posts.*, users.username
-       FROM posts
-       INNER JOIN users ON users.id = posts.user_id
-       WHERE posts.id = $1`,
-      [id]
-    );
+    const { data, error } = await supabase
+      .schema("blog")
+      .from("posts")
+      .select(`*, users(username)`)
+      .eq("id", id)
+      .single();
 
-    if (result.rows.length === 0) {
-      return res.status(404).json({ error: "Post not found" });
-    }
+    if (error) return res.status(404).json({ error: "Post not found" });
 
-    res.json(result.rows[0]);
+    res.json(data);
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Failed to fetch post" });
