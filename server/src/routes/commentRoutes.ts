@@ -7,9 +7,13 @@ import { Request, Response } from "express";
 const router = express.Router();
 
 router.post("/:postId/comments", authMiddleware, async (req: Request, res: Response) => {
-  const { postId } = req.params;
+  const postId = parseInt(req.params.postId as string); // parse it here
   const { comment } = req.body as NewComment;
   const userId = req.user?.userId ?? null;
+
+  if (isNaN(postId)) {
+    return res.status(400).json({ error: "Invalid post ID" });
+  }
 
   if (!comment) {
     return res.status(400).json({ message: "Dont forget to leave a comment!" });
@@ -27,37 +31,15 @@ router.post("/:postId/comments", authMiddleware, async (req: Request, res: Respo
       .select()
       .single();
 
-    if (error) return res.status(500).json({ error: error.message });
+    if (error) {
+      console.error("Supabase comment error:", error) 
+      return res.status(500).json({ error: error.message });
+    }
 
     res.status(201).json(data);
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Failed to create comment" });
-  }
-});
-
-router.get("/:postId/comments", async (req: Request, res: Response) => {
-  const postId = parseInt(req.params.postId as string);
-
-  if (!postId) {
-    return res.status(400).json({ error: "Invalid post ID" });
-  }
-
-  try {
-    const { data, error } = await supabase
-      .schema("blog")
-      .from("comments")
-      .select(`*, users(username)`)
-      .eq("post_id", postId)
-      .order("created_at", { ascending: false })
-      .returns<Comment[]>();
-
-    if (error) return res.status(500).json({ error: error.message });
-
-    res.json(data);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Failed to fetch comments" });
   }
 });
 
