@@ -9,7 +9,7 @@ const router = express.Router();
 router.post("/:postId/comments", authMiddleware, async (req: Request, res: Response) => {
   const postId = parseInt(req.params.postId as string);
   const { comment } = req.body as NewComment;
-  const userId = req.user?.id ?? null;
+  const userId = req.user?.userId ?? null;
 
   if (isNaN(postId)) {
     return res.status(400).json({ error: "Invalid post ID" });
