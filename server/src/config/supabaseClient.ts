@@ -12,6 +12,6 @@ export const supabase = createClient(supabaseUrl, supabaseKey, {
     persistSession: false,
   },
   db: {
-    schema: "blog",  // set default schema here so you don't need .schema("blog") on every query
+    schema: "blog", 
   }
 });
