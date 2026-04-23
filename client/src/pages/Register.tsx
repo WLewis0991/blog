@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import type { LogIn } from "../types/logIn";
-import { register } from "../api/auth"; // adjust path
+import { register } from "../api/auth";
 
 export default function Register() {
   const [user, setUser] = useState<LogIn>({
